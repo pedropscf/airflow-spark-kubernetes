@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: readpandas
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+      - name: readshow
+        image: pedropscf/exemplo_job:v1
+        env:
+          - name: MINHA_VAR
+            valueFrom:
+              configMapKeyRef:
+                name: ambiente
+                key: minha_var
+        command: ["python","/run.py"]
+      restartPolicy: Never
+

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-web
+  labels:
+    curso: igti
+    app: pod_example
+spec:
+  containers:
+    - name: web
+      image: nginx:latest
+      ports:
+        - name: webports
+          containerPort: 80
+          protocol: TCP
